@@ -102,7 +102,7 @@ int main(int argc, char** argv) {
 			return 0;
 		}
 		movement(1);
-		sleep_for(milliseconds(100));
+		sleep_for(milliseconds(20));
 		//ClearScreen();
 	}
 	return 0;

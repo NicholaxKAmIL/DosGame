@@ -54,7 +54,7 @@ int game(int pos){
 		pos--;s--;
 		 
 	}
-
+`
 	cout<<"O"<<Sarray<<"O"<<endl;
 	if(dis == 0){
 		qu = quiz();

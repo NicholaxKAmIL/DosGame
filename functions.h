@@ -86,21 +86,12 @@ void logo(int input){
 	setColor(15, 0);
 }
 
-int pts = 0;
 int position,dis=50,qu=5; 
-
-int score;
 
 int quiz(){
 	int x = rand() % (11);
 	return x;
 }
-
-int points(){
-	pts = pts + 10;
-	return pts;
-}
-
 
 
 int fps(int tmp){
@@ -115,7 +106,7 @@ int fps(int tmp){
 		return tmp;
 }
 
-iint game(int pos){
+int game(int pos){
 	char space[] = " ",car[] = "U";
 	string Sarray;
 	int s = qu;
@@ -181,11 +172,11 @@ int movement(int in){
 
 int revival(int lives, int pog){
 	if(lives == 3){
-		cout<<"would you like to use 50000 points to revive? [Yes(1)/No(0)]"<<endl;
+		cout<<"would you like to use 50 points to revive? [Yes(1)/No(0)]"<<endl;
 		int tmp;
 		cin>>tmp;
 		if(tmp == 1){
-			pts = pts - 50000;
+			score = score - 50;
 			position = 3;
 			dis = 50;
 			qu=5; 
@@ -205,11 +196,11 @@ int revival(int lives, int pog){
 		}
 	}
 	if(lives == 2){
-		cout<<"would you like to use 250000 points to revive? [Yes(1)/No(0)]"<<endl;
+		cout<<"would you like to use 250 points to revive? [Yes(1)/No(0)]"<<endl;
 		int tmp;
 		cin>>tmp;
 		if(tmp == 1){
-			pts = pts - 250000;
+			score = score - 250;
 			position = 3;
 			dis = 50;
 			qu=5; 
@@ -230,16 +221,15 @@ int revival(int lives, int pog){
 	}
 	if(lives == 1){
 		cout<<"ngl ur kinda bad"<<endl;
-		gameOver = true;
-		cout<<"game over"<<endl;
 	}
 	gameOver = true;
 	cout<<"game over"<<endl;
 	while(1){
-		int tmp;
-		cin>>tmp;
 	}
 	
+	
+}
+
 	int color(int in){
 	cout<<"1 = red, 2 = green, 3 = blue or 4 = purple"<<endl;
 	cin>>in;
@@ -257,9 +247,9 @@ int revival(int lives, int pog){
 	}
 	if (in == 4){
 		HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); 
-		SetConsoleTextAttribute(hOut, FOREGROUND_INTENSITY | FOREGROUND_PURPLE );
+		SetConsoleTextAttribute(hOut, FOREGROUND_INTENSITY | 5 );
 	}
-}
+
 }
 
 

@@ -19,7 +19,7 @@ int main(){
 		pogCPP = fps(pogCPP);
 		
 		sleep_for(milliseconds(pogCPP));
-		//ClearScreen();
+		
 	}
 	return 0;
 }

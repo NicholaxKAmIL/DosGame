@@ -21,6 +21,8 @@ using namespace std::chrono; // nanoseconds, system_clock, secon
 
 using namespace std;
 
+int score = 0;
+
 bool gameOver = false;
 
 void setColor(int fg, int bg){
@@ -113,34 +115,36 @@ int fps(int tmp){
 		return tmp;
 }
 
-int game(int pos){
+iint game(int pos){
 	char space[] = " ",car[] = "U";
 	string Sarray;
 	int s = qu;
 	dis--;
-
 	
 	for(int i = 0;i<11;i++){
-		
 		if(pos!=0)Sarray += space;
 		if(pos!=0&&s==0){
-			if(dis == 0)
-				Sarray = Sarray  + "t";
+			if(dis ==0)
+				Sarray += "T";
 			else
-				Sarray = Sarray + "i";
+				Sarray += "i";
 		}
+
 		if(pos == 0&&s != 0) Sarray += car;
-		if(pos == 0&&s == 0) Sarray = Sarray + space+"M" ;
-		
+		if(pos == 0&&s == 0){
+			Sarray = Sarray + space+"M" ;
+			score +=1 ;
+		}
 		if(pos == 0&&s == 0&&dis ==0){
 			cout<<"BOOOOOOOM!"<<endl;
+			
 			return 0;
 		}
 		pos--;s--;
 		 
 	}
-
-	cout<<"O"<<Sarray<<"O"<<"           "<<points()<<endl;
+	cout<<"(:"<<Sarray<<":)";
+	cout<<"    score:"<<score<<endl;
 	if(dis == 0){
 		qu = quiz();
 		dis = 50;
@@ -235,6 +239,27 @@ int revival(int lives, int pog){
 		int tmp;
 		cin>>tmp;
 	}
+	
+	int color(int in){
+	cout<<"1 = red, 2 = green, 3 = blue or 4 = purple"<<endl;
+	cin>>in;
+	if (in == 1){
+		HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); 
+		SetConsoleTextAttribute(hOut, FOREGROUND_INTENSITY | FOREGROUND_RED );
+	}
+	if (in == 2){
+		HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); 
+		SetConsoleTextAttribute(hOut, FOREGROUND_INTENSITY | FOREGROUND_GREEN );
+	}
+	if (in == 3){
+		HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); 
+		SetConsoleTextAttribute(hOut, FOREGROUND_INTENSITY | FOREGROUND_BLUE );
+	}
+	if (in == 4){
+		HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); 
+		SetConsoleTextAttribute(hOut, FOREGROUND_INTENSITY | FOREGROUND_PURPLE );
+	}
+}
 }
 
 

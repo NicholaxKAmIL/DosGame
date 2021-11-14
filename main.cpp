@@ -6,6 +6,7 @@ int livesCPP = 4;
 int main(){
 	
 	logo(13);
+	color(1);
 	
 	while(1){	
 		if(game(position)==0 && gameOver == false){

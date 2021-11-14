@@ -1,6 +1,7 @@
 #include <iostream>
 #include "logo.h"
 #include "clearScr.h"
+#include "color.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 #include <chrono>
 #include <thread>
@@ -21,7 +22,7 @@ using namespace std::chrono; // nanoseconds, system_clock, secon
 
 using namespace std;
 
-int position,dis=50,qu=5; 
+int life,dis=50,qu=5; 
 
 int quiz(){
 	int x = rand() % (11) ;
@@ -55,7 +56,7 @@ int game(int pos){
 		 
 	}
 
-	cout<<"O"<<Sarray<<"O"<<endl;
+	cout<<"wall"<<Sarray<<"wall"<<endl;
 	if(dis == 0){
 		qu = quiz();
 		dis = 50;
@@ -77,11 +78,11 @@ int movement(int in){
         {
             case KB_LEFT:
                        //Do something
-                if(position!=0)position--;
+                if(life!=0)life--;
             break;
 
             case KB_RIGHT:
-            	if(position!=10)position++;
+            	if(life!=10)life++;
                        //Do something                     
             break;
 		}
@@ -90,21 +91,22 @@ int movement(int in){
 }
 
 int main(int argc, char** argv) {
+	int a;
+	color();
 	logo();
+	cout<<"easy, normal or hard? (easy=20, normal=10, hard=1.)\n";
+	cin>>a;
 	//while?
 		//game()
 	//;
 	while(1){	
-		if(game(position)==0){
-			cout<<"game over!"<<endl;
-			string temp;
-			cin>>temp;
-			return 0;
+		a-1;
+		if(game(life)==0){
+			cout<<"GAME OVER"<<endl;
+			break;
 		}
 		movement(1);
-		sleep_for(milliseconds(20));
+		sleep_for(milliseconds(a));
 		//ClearScreen();
 	}
-	return 0;
 }
-

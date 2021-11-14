@@ -1,6 +1,7 @@
 #include <iostream>
-#include "logo.h"
 #include "clearScr.h"
+#include "logo.h"
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 #include <chrono>
 #include <thread>
@@ -20,8 +21,9 @@ using namespace std::chrono; // nanoseconds, system_clock, secon
 #define KB_ESCAPE 27
 
 using namespace std;
+int score = 0;
 
-int position,dis=50,qu=5; 
+int position,dis=50,qu=5;
 
 int quiz(){
 	int x = rand() % (11) ;
@@ -33,10 +35,8 @@ int game(int pos){
 	string Sarray;
 	int s = qu;
 	dis--;
-
 	
 	for(int i = 0;i<11;i++){
-		
 		if(pos!=0)Sarray += space;
 		if(pos!=0&&s==0){
 			if(dis ==0)
@@ -44,18 +44,22 @@ int game(int pos){
 			else
 				Sarray += "i";
 		}
+
 		if(pos == 0&&s != 0) Sarray += car;
-		if(pos == 0&&s == 0) Sarray = Sarray + space+"M" ;
-		
+		if(pos == 0&&s == 0){
+			Sarray = Sarray + space+"M" ;
+			score +=1 ;
+		}
 		if(pos == 0&&s == 0&&dis ==0){
 			cout<<"BOOOOOOOM!"<<endl;
+			
 			return 0;
 		}
 		pos--;s--;
 		 
 	}
-
-	cout<<"O"<<Sarray<<"O"<<endl;
+	cout<<"(:"<<Sarray<<":)";
+	cout<<"    score:"<<score<<endl;
 	if(dis == 0){
 		qu = quiz();
 		dis = 50;
@@ -89,8 +93,16 @@ int movement(int in){
 
 }
 
+//int scores(int in){
+	//if(){
+	//	score += 1;
+	//}
+//}
+
 int main(int argc, char** argv) {
 	logo();
+	color(1);
+	//scores(1);
 	//while?
 		//game()
 	//;
@@ -107,4 +119,3 @@ int main(int argc, char** argv) {
 	}
 	return 0;
 }
-
